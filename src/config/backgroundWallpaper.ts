@@ -51,7 +51,9 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		mobile: [
 			"assets/images/MobileWallpaper/e1.avif",
 			"assets/images/MobileWallpaper/e2.avif",
-			
+			"assets/images/MobileWallpaper/e3.avif",
+			"assets/images/MobileWallpaper/e4.avif",
+			"assets/images/MobileWallpaper/e5.avif",
 		],
 	},
 	// 横幅壁纸和全屏壁纸共享配置
@@ -63,7 +65,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 是否启用主页横幅文字
 			enable: true,
 			// 是否允许用户通过控制面板切换横幅标题显示
-			switchable: true,
+			switchable: false,
 			// 主页横幅主标题
 			title: "El Psy Kongroo!",
 			// 主页横幅主标题字体大小
@@ -106,7 +108,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				mobile: true,
 			},
 			// 是否允许用户通过控制面板切换水波纹动画
-			switchable: true,
+			switchable: false,
 		},
 		// 渐变过渡效果配置，当水波纹关闭时自动启用，提供壁纸底部到背景色的平滑过渡
 		gradient: {
@@ -119,7 +121,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 渐变高度
 			height: "15vh",
 			// 是否允许用户通过控制面板切换渐变过渡
-			switchable: true,
+			switchable: false,
 		},
 	},
 	// Banner模式特有配置
