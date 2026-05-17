@@ -1,24 +1,23 @@
 ---
-title: Firefly 简单使用指南
-published: 1970-01-02
+title: Firefly 第一篇博客
+published: 2026-05-17
 pinned: true
-description: "如何使用 Firefly 博客模板。"
-image: "./cover.avif"
-tags: ["Firefly", "博客", "Markdown", "使用指南"]
-category: 博客指南
+description: "测试网站"
+tags: ["测试"]
+category: 测试
 draft: false
 ---
 
 
 
-这个博客模板是基于 [Astro](https://astro.build/) 构建的。对于本指南中未提及的内容，您可以在 [Astro 文档](https://docs.astro.build/) 中找到答案。
+这个博客用来测试。
 
 ## 文章的 Front-matter
 
 ```yaml
 ---
 title: 我的第一篇博客文章
-published: 2023-09-09
+published: 2026-05-17
 description: 这是我新 Astro 博客的第一篇文章。
 image: ./cover.jpg
 tags: [前端, 开发]
@@ -53,7 +52,7 @@ draft: false
 
 ## 文章文件的放置位置
 
-您的文章文件应放置在 `src/content/posts/` 目录中。您也可以创建子目录来更好地组织您的文章和资源。
+文章文件应放置在 `src/content/posts/` 目录中，可以使用子目录。
 
 ```
 src/content/posts/
@@ -63,59 +62,3 @@ src/content/posts/
     └── index.md
 ```
 
-## 自定义文章 URL (Slug)
-
-### 什么是 Slug？
-
-Slug 是文章 URL 路径的自定义部分。如果不设置 slug，系统将使用文件名作为 URL。
-
-### Slug 使用示例
-
-#### 示例 1：使用文件名作为 URL
-```yaml
----
-title: 我的第一篇博客文章
-published: 2023-09-09
----
-```
-文件：`src/content/posts/my-first-blog-post.md`
-
-URL：`/posts/my-first-blog-post`
-
-#### 示例 2：自定义 Slug
-```yaml
----
-title: 我的第一篇博客文章
-published: 2023-09-09
-slug: hello-world
----
-```
-文件：`src/content/posts/my-first-blog-post.md`
-
-URL：`/posts/hello-world`
-
-#### 示例 3：其他语言文件名使用Slug
-```yaml
----
-title: 如何使用 Firefly 博客主题
-published: 2023-09-09
-slug: how-to-use-firefly-blog-theme
----
-```
-文件：`src/content/posts/如何使用Firefly博客主题.md`
-
-URL：`/posts/how-to-use-firefly-blog-theme`
-
-### Slug 使用建议
-
-1. **使用英文和连字符**：`my-awesome-post` 而不是 `my awesome post`
-2. **保持简洁**：避免过长的 slug
-3. **具有描述性**：让 URL 能够反映文章内容
-4. **避免特殊字符**：只使用字母、数字和连字符
-5. **保持一致性**：在整个博客中使用相似的命名模式
-
-### 注意事项
-
-- Slug 一旦设置并发布，建议不要随意更改，以免影响 SEO 和已存在的链接
-- 如果多个文章使用相同的 slug，后面的文章会覆盖前面的
-- Slug 会自动转换为小写
