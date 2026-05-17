@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: " Observing, learning, remembering",
 
 	// 站点 URL
-	site_url: "https://firefly.cuteleaf.cn",
+	site_url: "https://linelog.top",
 
 	// 站点描述
 	description:
