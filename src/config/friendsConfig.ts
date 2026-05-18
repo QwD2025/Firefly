@@ -35,9 +35,9 @@ export const friendsConfig: FriendLink[] = [
 	{
 		title: "Yuki",
 		imgurl:
-			"https://yukilove.top",
+			"https://yukilove.top/wp-content/uploads/2025/12/1765634941-%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251213220826_509_3.jpg",
 		desc: "世界，你好！-Yuki的个人博客",
-		siteurl: "https://yukilove.top/avatar.jpg",
+		siteurl: "https://yukilove.top/",
 		tags: ["Blog"],
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
