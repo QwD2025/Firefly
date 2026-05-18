@@ -1,5 +1,5 @@
 ---
-title:linelog.top因何而建？
+title: linelog.top因何而建？
 published: 2026-05-18
 pinned: false
 tags: [生活]
