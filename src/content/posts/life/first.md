@@ -5,6 +5,7 @@ pinned: false
 tags: [生活]
 category: 生活
 draft: false
+slug: my-first-blog
 ---
 
 在某天的下午，我一时兴起搭建了Claude Code的框架，并接入了DeepSeek的api，对于我来说，就像孩子得到了新玩具，那么几天我都在全新的领域玩耍。
