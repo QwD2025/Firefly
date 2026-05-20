@@ -5,7 +5,7 @@ pinned: false
 tags: [python]
 category: 学习之路
 update: 2026-05-20
-draft: false
+draft: true
 description: "尝试配置anaconda环境，为数据分析做准备。"
 image: /assets/images/Anaconda.png
 ---
