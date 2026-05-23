@@ -29,27 +29,32 @@ image: /assets/images/neuro.png
 
 ## 整体架构
 
-```mermaid
- subgraph Frontend["Frontend (浏览器)"]
-          L2D["Live2D 面板<br/>PIXI.js + pixi-live2d-display"]
-          Chat["聊天面板<br/>消息列表 | 输入框 | 人格选择器 | 数据导入"]
-      end
-
-      subgraph Backend["FastAPI Backend"]
-          ChatPy["chat.py<br/>LLM 对话 + 记忆压缩"]
-          Mem["memory.py<br/>ChromaDB + 离线 Embedding"]
-          Pers["personality.py<br/>人格管理"]
-          Import["import_data.py<br/>聊天记录导入/解析"]
-      end
-
-      LLM["DeepSeek API<br/>deepseek-v4-pro"]
-
-      Frontend -->|"HTTP / POST /api/chat"| Backend
-      ChatPy --> Mem
-      ChatPy --> Pers
-      Import --> Mem
-      Backend -->|"API Call<br/>Anthropic Messages 端点"| LLM
-```
+ ┌──────────────────────────────────────────────────┐
+  │                   Frontend                       │
+  │  ┌─────────────┐    ┌─────────────────────────┐  │
+  │  │ Live2D 面板  │    │   聊天面板               │  │
+  │  │ (PIXI.js)   │    │  - 消息列表              │  │
+  │  │             │    │  - 输入框                │  │
+  │  │             │    │  - 人格选择器            │  │
+  │  │             │    │  - 数据导入               │  │
+  │  └─────────────┘    └─────────────────────────┘  │
+  └──────────────────────┬───────────────────────────┘
+                         │ HTTP/API
+  ┌──────────────────────┴───────────────────────────┐
+  │               FastAPI Backend                     │
+  │  ┌──────────┐ ┌──────────┐ ┌──────────────────┐  │
+  │  │ chat.py  │ │memory.py │ │ personality.py   │  │
+  │  │ LLM调用  │ │ChromaDB  │ │ 人格管理          │  │
+  │  └──────────┘ └──────────┘ └──────────────────┘  │
+  │  ┌──────────────────────────────────────────────┐ │
+  │  │ import_data.py — 聊天记录导入/解析            │ │
+  │  └──────────────────────────────────────────────┘ │
+  └──────────────────────┬───────────────────────────┘
+                         │ API Call
+  ┌──────────────────────┴───────────────────────────┐
+  │           DeepSeek API (Anthropic 兼容)           │
+  │           Model: deepseek-v4-pro                  │
+  └──────────────────────────────────────────────────┘
 
 ## 为什么选这些？
 
