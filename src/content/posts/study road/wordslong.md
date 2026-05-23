@@ -1,3 +1,14 @@
+---
+title: 尝试配置Neuro青春版v1.0
+published: 2026-05-23
+pinned: false
+tags: [AI]
+category: 学习之路
+update: 2026-05-20
+draft: true
+description: "我用 Claude Code + DeepSeek API + Live2D + ChromaDB，从零搭建了一个拥有长期记忆、自动压缩、多人格切换的 AI。这篇文章记录了完整的开发过程、技术选型、踩坑记录，以及 AI 辅助编程的真实体验"
+image: /assets/images/neuro.png
+---
 # 给 AI 聊天加一个「回复长度」滑块 —— 前后端全链路实现
 
 > 用户反馈 AI 回复太长，于是我花了 15 分钟在网页里加了一个控制回复字数的滑块。这篇文章记录完整的实现过程。
