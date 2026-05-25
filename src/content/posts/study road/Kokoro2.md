@@ -5,7 +5,7 @@ pinned: false
 tags: [AI]
 category: 学习之路
 update: 2026-05-25
-draft: true
+draft: false
 description: "更新总结"
 image: /assets/images/kokoro.png
 ---
