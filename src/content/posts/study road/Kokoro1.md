@@ -4,7 +4,7 @@ published: 2026-05-23
 pinned: false
 tags: [AI]
 category: 学习之路
-update: 2026-05-20
+update: 2026-05-23
 draft: false
 description: "我用 Claude Code + DeepSeek API + Live2D + ChromaDB，从零搭建了一个拥有长期记忆、自动压缩、多人格切换的 AI。这篇文章记录了完整的开发过程、技术选型、踩坑记录，以及 AI 辅助编程的真实体验"
 image: /assets/images/neuro.png
