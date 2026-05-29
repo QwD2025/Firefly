@@ -4,9 +4,8 @@ published: 2026-05-29
 pinned: false
 tags: [ios]
 update: 2026-05-29
-draft: true
+draft: false
 description: "不知道干什么。"
-image: /assets/images/
 ---
  
 **设备：** iPhone 5（MD297CH/A，国行，16GB，黑色，2012年产）  
