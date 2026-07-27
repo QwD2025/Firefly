@@ -24,7 +24,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "qq",
 			icon: "fa7-brands:qq",
-			url:  "tencent://Message/?uin=82033033",
+			url: 'tencent://ntqq-open?subCmd=profile&action=openMiniBuddyProfile&actionParams={"uin":"82033033","sourceType":"QrCodeShareBuddyLink"}',
 			showName: false,
 		},
 		{
