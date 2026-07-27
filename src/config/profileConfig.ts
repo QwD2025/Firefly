@@ -24,7 +24,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "qq",
 			icon: "fa7-brands:qq",
-			url: "",
+			url: "tencent://Message/?uin=82033033",
 			showName: false,
 		},
 		{
@@ -36,7 +36,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Email",
 			icon: "fa7-solid:envelope",
-			url: "",
+			url: "mailto:qiaokeliyouxiaoqi@gmail.com",
 			showName: false,
 		},
 		{
