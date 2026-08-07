@@ -9,7 +9,7 @@ draft: false
 description: "更新总结"
 image: /assets/images/kokoro.png
 ---
-!(https://tu.linelog.top/file/1786105786981_kokoro.png)
+![第二版](https://tu.linelog.top/file/1786105786981_kokoro.png)
 ## 更新内容
 
 - 全面优化界面

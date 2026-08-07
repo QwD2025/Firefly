@@ -9,7 +9,7 @@ draft: false
 description: "Multisim 导出 `.cir` 文件，然后导入Matlab，直接转换成元胞数组描述电路拓扑。"
 image: /assets/images/电路.png
 ---
-!(https://tu.linelog.top/file/1786105789273_电路.png)
+![测试电路图](https://tu.linelog.top/file/1786105789273_电路.png)
 # 让 MATLAB 读懂电路描述
 
 ## 背景
