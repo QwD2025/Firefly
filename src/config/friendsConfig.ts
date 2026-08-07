@@ -35,7 +35,7 @@ export const friendsConfig: FriendLink[] = [
 	{
 		title: "Yuki",
 		imgurl:
-			"",
+			"https://favicon.so/api/favicon?url={https://yukilove.top/}",
 		desc: "世界，你好！-Yuki的个人博客",
 		siteurl: "https://yukilove.top/",
 		tags: ["Blog"],
