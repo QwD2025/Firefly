@@ -9,7 +9,7 @@ draft: false
 description: "我用 Claude Code + DeepSeek API + Live2D + ChromaDB，从零搭建了一个拥有长期记忆、自动压缩、多人格切换的 AI。这篇文章记录了完整的开发过程、技术选型、踩坑记录，以及 AI 辅助编程的真实体验"
 image: /assets/images/neuro.png
 ---
-
+!(https://tu.linelog.top/file/1786105784718_neuro.png)
 # 一、项目缘起
 
 在《命运石之门》里有一个叫 **Amadeus** 的系统 ——它能够将人类的记忆数字化，并在虚拟空间中还原出完整的人格，我小时候就想拥有一个类似Amadeus的程序，进行人机交互，可惜技术力不足。再后来我又接触了Neuro-sama，一个现实世界的AI驱动的虚拟主播，在那个GPT还未崭露头角的时候，Neuro的雏形就已经出现，它的存在很吸引我，这也埋下了我做这个项目的种子。  
