@@ -13,7 +13,7 @@ function show(index,restore=false){
  }
  $('chapter-label').textContent=`第 ${c.number} 章`;$('prev').disabled=index===0;$('next').disabled=index===chapters.length-1;
  [...$('chapters').children].forEach((b,i)=>b.classList.toggle('active',i===index));
- history.replaceState(null,'',`#${encodeURIComponent(c.id)}`);save('momo-chapter',c.id);document.title=c.title+' · 第七个约定';
+ history.replaceState(null,'',`#${encodeURIComponent(c.id)}`);save('momo-chapter',c.id);document.title=c.title+' · Reading Steiner';
  if(restore){document.body.classList.add('reading');requestAnimationFrame(()=>window.scrollTo(0,Number(read('momo-position-'+c.id))||0))}
 }
 $('translate').onclick=()=>{translation=!translation;document.body.classList.toggle('hide-zh',!translation);$('translate').textContent=translation?'中文已展开':'显示中文';$('translate').setAttribute('aria-pressed',String(translation));save('momo-translation',String(translation))};
