@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1000" gradientUnits="userSpaceOnUse"><stop stop-color="#8dc8f2"/><stop offset=".55" stop-color="#d6edfa"/><stop offset="1" stop-color="#f3e9e7"/></linearGradient>
+ <linearGradient id="sea" x2="0" y1="480" y2="850" gradientUnits="userSpaceOnUse"><stop stop-color="#75b6d2"/><stop offset="1" stop-color="#badadf"/></linearGradient>
+ <linearGradient id="land" x1="800" x2="1600" y2="1000" gradientUnits="userSpaceOnUse"><stop stop-color="#8aa8a5"/><stop offset="1" stop-color="#456e7c"/></linearGradient>
+ <linearGradient id="platform" x1="800" x2="1400" y1="700" y2="1000" gradientUnits="userSpaceOnUse"><stop stop-color="#ccd4d2"/><stop offset="1" stop-color="#9aafbb"/></linearGradient>
+</defs>
+<path fill="url(#sky)" d="M0 0h1600v1000H0z"/>
+<g fill="#fff" opacity=".85">
+ <path d="M775 236c-18-28 10-58 41-51 5-49 61-73 98-42 10-68 97-76 125-20 36-24 84 3 82 41 40-3 58 21 58 41 46-7 74 12 86 31z"/>
+ <path d="M1080 312c-15-21 2-44 26-41 10-40 52-44 70-13 28-12 53 3 54 25 38-4 70 8 88 29z" opacity=".65"/>
+ <path d="M1345 97c-10-22 12-43 36-35 18-47 73-40 84-6 32-21 67-4 72 21 33-2 56 10 63 20z"/>
+ <path d="M270 330c47-21 110-19 147-8 56-16 118-10 164 8z" opacity=".65"/>
+</g>
+<path d="M0 489c180-12 255 0 400-7 170-8 240-14 420 0 190-9 340-11 780 0v350H0z" fill="url(#sea)"/>
+<path d="m0 487 200-9 125 4 134-19 162 22 137-13 92 15 192-21 173 12 185-8 200 15" stroke="#94bbcc" stroke-width="7"/>
+<g stroke="#e5f5f8" stroke-width="3" opacity=".8"><path d="M725 522h260m70 20h270m-730 25h180m110 0h350m-550 42h180m100 7h340M560 665h240m140-10h370M360 710h350m50 25h300"/></g>
+<path d="M1600 578c-170 18-226 50-365 61-194 17-278 90-470 131-162 35-224 75-359 95l-159 135h1353z" fill="url(#land)"/>
+<path d="M1600 672 1147 713 660 1000h940z" fill="#4a6676"/>
+<path d="m1600 704-426 26-433 270m859-262-379 16-380 246" stroke="#b0bec4" stroke-width="7"/>
+<g stroke="#728997" stroke-width="11"><path d="m1164 755 138 18m-188 10 153 22m-207 11 162 25m-225 12 187 28m-251 16 209 34m-278 10 236 41m-309 11 258 47"/></g>
+<path d="m1600 790-376-7-332 217h708z" fill="url(#platform)"/>
+<path d="m1600 809-369-9-298 200" stroke="#f4dfb5" stroke-width="10"/>
+<path d="m1600 831-363-11-245 180" stroke="#d1bfa2" stroke-width="2" stroke-dasharray="3 6"/>
+<g fill="#537b8f"><path d="M1370 235h12v578h-12zM1115 340h8v391h-8zM934 403h6v358h-6z"/><path d="M1339 259h73v8h-73zm-245 98h54v6h-54zm-174 59h37v5h-37z"/></g>
+<g stroke="#5d7c91" stroke-width="2"><path d="M1600 84Q1440 205 1376 250q-122 89-258 101-94 51-181 59L770 458"/><path d="M1600 131q-144 108-224 132-120 86-258 99-99 46-181 60l-167 43"/></g>
+<g><path d="m1293 581 166-4v66l-166 5z" fill="#eaf4f3" stroke="#64859a" stroke-width="4"/><path d="m1293 630 166-5v18l-166 5z" fill="#668fa1"/><path d="M1310 648h6v139h-6zm128-5h6v150h-6z" fill="#5a7a8b"/><text x="1320" y="612" font-family="Georgia,serif" font-size="19" fill="#42687e">Harrow Bay</text></g>
+<g transform="translate(1485 720)"><path d="m-40 25 99 3v13l-99-3zM-31 39h8v50h-8zm73 2h8v50h-8z" fill="#456878"/><path d="m-36-8 93 2v23l-93-2z" fill="#7793a0"/><path d="M-30 13v15m80-13v15" stroke="#456878" stroke-width="7"/></g>
+<!-- A small traveller, drawn as a quiet silhouette rather than a character portrait. -->
+<g transform="translate(1273 705)"><path d="m0 69-3 43 6 2 10-44m8-1 6 43 6-1-1-46" fill="#344f68"/><path d="m-4 24-9 48q23 10 44-1L22 22z" fill="#f5f4ed"/><path d="m-4 30-13 36 5 3L3 37m18-7 14 34-5 3-15-29" fill="#edd4c4"/><path d="m-8 62-7 18q29 12 50-1l-7-17z" fill="#4b6680"/><ellipse cx="9" cy="11" rx="13" ry="16" fill="#edd4c4"/><path d="M-6 18C-14-19 33-22 26 20l-6-14-17-3-5 18z" fill="#385064"/><path d="M-3 26 12 43l9-18" stroke="#7c9eaf" stroke-width="5"/><path d="m27 47 14 3-3 23-14-3z" fill="#9a7568"/><path d="M28 48q-3-16 8-9l2 10" stroke="#9a7568" stroke-width="3"/><path d="m-3 111-5 5h13v-5m20-1 2 6h12l-7-7" fill="#31465c"/></g>
+<g fill="#fce5e9" opacity=".8"><path d="M1201 292q17-8 20 2-13 16-20-2M1454 406q14-10 19 0-6 16-19 0M1090 668q11-8 17 1-9 12-17-1M1510 196q15-7 18 4-12 9-18-4"/></g>
+<g stroke="#6b92ad" stroke-width="2" stroke-linecap="round"><path d="M1197 371q9-8 16 0 7-8 15-2m-177-48q6-6 12 0 5-7 11-3"/></g>
+</svg>
