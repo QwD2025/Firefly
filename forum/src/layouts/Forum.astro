@@ -1,0 +1,79 @@
+---
+import "../styles/forum.css";
+import { site } from "../data/site";
+
+interface Props {
+  title: string;
+  active?: "home" | "archive" | "about";
+  trail?: Array<{ label: string; href: string }>;
+  search?: boolean;
+}
+const { title, active, trail, search = true } = Astro.props;
+const nav = [
+  { id: "home", title: "论坛首页", href: "/" },
+  { id: "archive", title: "历史档案", href: "/archive/" },
+  { id: "about", title: "关于本站", href: "/about/" },
+];
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={`${site.name}，创立于 ${site.foundedYear} 年的虚构世界论坛。`} />
+    <meta name="theme-color" content="#21476a" />
+    <title>{title} · {site.name}</title>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">跳到正文</a>
+    <div class="site-shell">
+      <header>
+        <div class="masthead">
+          <a class="brand" href="/" aria-label={`${site.name} 论坛首页`}>
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>
+              <span class="brand-name">{site.name}</span>
+              <span class="brand-meta">创立于 {site.foundedYear} 年</span>
+            </span>
+          </a>
+          <div class="world-date">
+            <span>站内年份</span>
+            <strong>{site.worldYear}</strong>
+          </div>
+        </div>
+        <div class="navigation">
+          <nav class="main-links" aria-label="主导航">
+            {nav.map((entry) => (
+              <a href={entry.href} aria-current={active === entry.id ? "page" : undefined}>
+                {entry.title}
+              </a>
+            ))}
+          </nav>
+          {search && (
+            <form class="quick-search" action="/search/">
+              <label class="visually-hidden" for="quick-query">搜索主题</label>
+              <input name="q" id="quick-query" type="search" placeholder="搜索主题" maxlength="80" required />
+              <button>搜索</button>
+            </form>
+          )}
+        </div>
+      </header>
+      <main id="main">
+        {trail && (
+          <nav class="breadcrumbs" aria-label="当前位置">
+            <ol>
+              <li><a href="/">论坛首页</a></li>
+              {trail.map((entry) => <li><a href={entry.href}>{entry.label}</a></li>)}
+              <li aria-current="page">{title}</li>
+            </ol>
+          </nav>
+        )}
+        <slot />
+      </main>
+      <footer class="site-footer">
+        <span>{site.name} <span aria-hidden="true">·</span> {site.foundedYear}–{site.worldYear}</span>
+        <span>虚构世界论坛 <span aria-hidden="true">·</span> 访客只读</span>
+      </footer>
+    </div>
+  </body>
+</html>

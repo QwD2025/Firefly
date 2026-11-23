@@ -1,0 +1,43 @@
+---
+import { render } from "astro:content";
+import Forum from "../../layouts/Forum.astro";
+import { formatTime, getThreads, memberName, topicBoard } from "../../data/forum";
+
+export async function getStaticPaths() {
+  return (await getThreads()).map((thread) => ({
+    params: { topic: thread.id }, props: { thread },
+  }));
+}
+const { thread } = Astro.props as { thread: Awaited<ReturnType<typeof getThreads>>[number] };
+const board = topicBoard(thread.board);
+const posts = await Promise.all(thread.posts.map(async (entry) => ({
+  entry,
+  ...(await render(entry)),
+})));
+---
+<Forum title={thread.title} trail={[{ label: board.name, href: `/board/${board.id}/` }]}>
+  <div class="page-heading">
+    <h1>{thread.title}</h1>
+    <p>{board.name} · {thread.posts.length - 1} 条回帖</p>
+  </div>
+  <section class="thread" aria-label="主题楼层">
+    {posts.map(({ entry, Content }) => {
+      const { number, author, postedAt, editedAt, replyTo } = entry.data;
+      const anchor = `post-${number}`;
+      return (
+        <article class="panel post" id={anchor}>
+          <div class="post-author"><strong>{memberName(author)}</strong></div>
+          <div class="post-content">
+            <header class="post-meta">
+              <time datetime={postedAt}>{formatTime(postedAt)}</time>
+              <a href={`#${anchor}`}>#{number}</a>
+            </header>
+            {replyTo && <p class="post-quote"><a href={`#post-${replyTo}`}>引用 #{replyTo}</a></p>}
+            <div class="post-body"><Content /></div>
+            {editedAt && <p class="post-edited">最后编辑于 <time datetime={editedAt}>{formatTime(editedAt)}</time></p>}
+          </div>
+        </article>
+      );
+    })}
+  </section>
+</Forum>

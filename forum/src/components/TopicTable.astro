@@ -1,0 +1,33 @@
+---
+import { formatTime, memberName } from "../data/forum";
+import type { getThreads } from "../data/forum";
+
+interface Props {
+  topics: Awaited<ReturnType<typeof getThreads>>;
+  caption?: string;
+  empty?: string;
+}
+const { topics, caption = "主题列表", empty = "该版块暂无主题。" } = Astro.props;
+---
+<section class="panel" aria-label={caption}>
+  <table class="forum-table topic-table">
+    <colgroup><col /><col class="col-author" /><col class="col-count" /><col class="col-last" /></colgroup>
+    <thead>
+      <tr><th scope="col">主题</th><th scope="col" class="topic-author">作者</th><th scope="col" class="number">回帖</th><th scope="col" class="last-column">最后回帖</th></tr>
+    </thead>
+    <tbody>
+      {topics.map((topic) => (
+        <tr>
+          <th scope="row">
+            <a class="row-title" href={`/topic/${topic.id}/`}>{topic.title}</a>
+            <span class="mobile-detail">{memberName(topic.first.data.author)} · {formatTime(topic.last.data.postedAt)}</span>
+          </th>
+          <td class="topic-author">{memberName(topic.first.data.author)}</td>
+          <td class="number">{topic.posts.length - 1}</td>
+          <td class="last-column"><a href={`/topic/${topic.id}/#post-${topic.last.data.number}`}>{formatTime(topic.last.data.postedAt)}</a></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  {topics.length === 0 && <p class="empty-row">{empty}</p>}
+</section>

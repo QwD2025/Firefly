@@ -1,4 +1,4 @@
-name: Build reader
+name: Build forum
 on:
   push:
     branches: [master]
@@ -9,9 +9,15 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: forum
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node scripts/build-reader.mjs
+          cache: npm
+          cache-dependency-path: forum/package-lock.json
+      - run: npm ci
+      - run: npm run build

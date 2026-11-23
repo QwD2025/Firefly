@@ -1,8 +1,8 @@
 {
-  "buildCommand": "pnpm build",
-  "outputDirectory": "dist",
-  "installCommand": "pnpm install",
-  "framework": "astro",
+  "buildCommand": "npm --prefix forum run build",
+  "outputDirectory": "forum/dist",
+  "installCommand": "npm --prefix forum ci",
+  "framework": null,
   "headers": [
     {
       "source": "/(.*)",

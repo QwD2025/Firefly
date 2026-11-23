@@ -1,0 +1,10 @@
+---
+import ArchivePage from "../../components/ArchivePage.astro";
+import { archiveYears } from "../../data/site";
+
+export function getStaticPaths() {
+  return archiveYears.map((year) => ({ params: { year: String(year) }, props: { year } }));
+}
+const { year } = Astro.props as { year: number };
+---
+<ArchivePage year={year} />

@@ -1,0 +1,43 @@
+---
+import Forum from "../layouts/Forum.astro";
+import TopicTable from "./TopicTable.astro";
+import { getThreads, yearOf } from "../data/forum";
+import { archiveYears, site } from "../data/site";
+
+interface Props { year: number; index?: boolean }
+const { year, index = false } = Astro.props;
+const topics = (await getThreads()).filter((topic) => yearOf(topic.first.data.postedAt) === year);
+const yearGroups = [...new Set(archiveYears.map((date) => Math.floor(date / 10) * 10))]
+  .map((decade) => archiveYears.filter((date) => Math.floor(date / 10) * 10 === decade));
+---
+<Forum
+  title={index ? "历史档案" : `${year} 年`}
+  active="archive"
+  trail={index ? undefined : [{ label: "历史档案", href: "/archive/" }]}
+>
+  <div class="page-heading">
+    <h1>历史档案</h1>
+    <p>按主题首帖年份归档，范围为 {site.foundedYear}–{site.worldYear} 年。</p>
+  </div>
+  <div class="archive-layout">
+    <nav class="panel year-selector" aria-label="档案年份">
+      <h2 class="panel-title">档案年份</h2>
+      {yearGroups.map((group) => (
+        <div class="year-group">
+          <div class="year-range">
+            {group.length > 1 ? `${group[group.length - 1]}–${group[0]}` : group[0]}
+          </div>
+          <ul class="year-grid">
+            {group.map((date) => (
+              <li><a href={`/archive/${date}/`} aria-current={date === year ? "page" : undefined}>{date}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </nav>
+    <section class="archive-results" aria-labelledby="year-title">
+      <h2 id="year-title" class="result-heading">{year} 年主题</h2>
+      <TopicTable topics={topics} caption={`${year} 年主题`} empty={`${year} 年暂无公开主题。`} />
+    </section>
+  </div>
+</Forum>

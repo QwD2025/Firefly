@@ -1,0 +1,49 @@
+---
+import Forum from "../layouts/Forum.astro";
+---
+<Forum title="搜索主题" search={false}>
+  <div class="page-heading"><h1>搜索主题</h1></div>
+  <section class="panel" aria-labelledby="search-title">
+    <h2 class="panel-title" id="search-title">按主题标题搜索</h2>
+    <form class="page-search" action="/search/">
+      <label for="query">关键词</label>
+      <input id="query" type="search" name="q" required maxlength="80" />
+      <button>搜索</button>
+    </form>
+    <p class="empty-row" id="search-status" role="status">输入关键词查看结果。</p>
+    <ul id="search-results" class="search-results" hidden></ul>
+    <noscript><p class="page-note">启用 JavaScript 后可搜索站内主题。</p></noscript>
+  </section>
+</Forum>
+<script>
+  type SearchEntry = { id: string; title: string; board: string };
+  const input = document.querySelector<HTMLInputElement>("#query")!;
+  const status = document.querySelector("#search-status")!;
+  const results = document.querySelector<HTMLUListElement>("#search-results")!;
+  const query = new URLSearchParams(location.search).get("q")?.trim().slice(0, 80);
+  if (query) {
+    input.value = query;
+    status.textContent = "正在查找主题…";
+    try {
+      const response = await fetch("/search-index.json");
+      if (!response.ok) throw new Error("Search index unavailable");
+      const index: SearchEntry[] = await response.json();
+      const needle = query.toLocaleLowerCase();
+      const matches = index.filter(({ title }) => title.toLocaleLowerCase().includes(needle));
+      for (const entry of matches) {
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        const board = document.createElement("span");
+        link.href = `/topic/${encodeURIComponent(entry.id)}/`;
+        link.textContent = entry.title;
+        board.textContent = entry.board;
+        item.append(link, board);
+        results.append(item);
+      }
+      results.hidden = matches.length === 0;
+      status.textContent = matches.length ? `找到 ${matches.length} 个主题。` : "没有匹配的公开主题。";
+    } catch {
+      status.textContent = "搜索暂时不可用，请刷新后重试。";
+    }
+  }
+</script>

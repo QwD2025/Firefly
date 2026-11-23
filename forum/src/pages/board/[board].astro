@@ -1,0 +1,22 @@
+---
+import Forum from "../../layouts/Forum.astro";
+import TopicTable from "../../components/TopicTable.astro";
+import { boards } from "../../data/site";
+import type { Board } from "../../data/site";
+import { getThreads } from "../../data/forum";
+
+export function getStaticPaths() {
+  return boards.map((board) => ({
+    params: { board: board.id }, props: { board },
+  }));
+}
+const { board } = Astro.props as { board: Board };
+const topics = (await getThreads()).filter((topic) => topic.board === board.id);
+---
+<Forum title={board.name} trail={[]}>
+  <div class="page-heading">
+    <h1>{board.name}</h1>
+    <p>{board.description}</p>
+  </div>
+  <TopicTable topics={topics} />
+</Forum>

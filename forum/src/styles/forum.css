@@ -1,0 +1,180 @@
+:root {
+  color-scheme: light;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  color: #203548;
+  background: #e9eff3;
+  --line: #bdcbd5;
+  --soft: #f2f6f8;
+  --muted: #536879;
+  --link: #1c527a;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.55; }
+a { color: var(--link); text-underline-offset: .18em; }
+a:hover { color: #803d23; text-decoration: underline; }
+:focus-visible { outline: 3px solid #b15225; outline-offset: 2px; }
+input, button { font: inherit; }
+input[type="search"] {
+  min-width: 0;
+  padding: .3rem .65rem;
+  border: 1px solid #99adbc;
+  border-radius: 2px;
+  background: #fff;
+}
+button {
+  padding: .3rem .85rem;
+  border: 1px solid #899fb0;
+  border-radius: 2px;
+  background: linear-gradient(#fff, #dce6ec);
+  color: #244963;
+  cursor: pointer;
+}
+button:hover { background: #e5eef4; }
+.visually-hidden, .skip-link:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.skip-link:focus { position: absolute; z-index: 1; padding: .5rem; background: white; }
+.site-shell {
+  width: min(70rem, calc(100% - 3rem));
+  margin: 2rem auto;
+  background: #fff;
+  border: 1px solid #9cafbd;
+  box-shadow: 0 3px 12px #243c4d14;
+}
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.35rem 1.65rem;
+  color: #fff;
+  background-color: #193e5d;
+  background-image: linear-gradient(90deg, #193e5d 20%, transparent 90%),
+    repeating-linear-gradient(0deg, transparent 0 15px, #ffffff0b 15px 16px),
+    repeating-linear-gradient(90deg, transparent 0 15px, #ffffff0b 15px 16px);
+  border-top: 4px solid #5986a8;
+}
+.brand { display: flex; align-items: center; gap: .85rem; color: white; text-decoration: none; }
+.brand:hover { color: white; text-decoration: none; }
+.brand-mark {
+  width: 2.45rem;
+  height: 2.45rem;
+  border: 1px solid #a9c2d3;
+  background: linear-gradient(#fff, #fff) .55rem .5rem / .27rem 1.4rem no-repeat,
+    repeating-linear-gradient(to top, #dcecf6 0 3px, transparent 3px 7px) left .82rem bottom .49rem / 1.05rem .8rem no-repeat;
+}
+.brand-name { display: block; font: bold 2.12rem/1.05 Georgia, serif; letter-spacing: .065em; }
+.brand-meta, .world-date span { display: block; color: #dce8f1; font-size: .81rem; }
+.brand-meta { margin-top: .24rem; }
+.world-date { text-align: right; }
+.world-date strong { font: normal 1.9rem/1.12 Georgia, serif; font-variant-numeric: tabular-nums; }
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  padding: .48rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(#f8fafb, #e4ebf0);
+  font-size: .9rem;
+}
+.main-links, .quick-search, .page-search { display: flex; align-items: center; gap: .4rem; }
+.main-links a { padding: .35rem .7rem; text-decoration: none; }
+.main-links a[aria-current="page"] { background: #d3e0e9; color: #183d59; font-weight: bold; }
+.quick-search input { width: 11rem; }
+main { padding: 1.35rem 1.5rem 1.6rem; }
+h1, h2, p, dl, dd, ol, ul { margin: 0; }
+h1 { font-size: 1.5rem; }
+.page-heading { margin-bottom: 1rem; }
+.page-heading p, .row-description, .page-note, .site-footer, .breadcrumbs, .post-meta, .post-edited { color: var(--muted); font-size: .875rem; }
+.index-heading, .archive-strip, .site-footer, .post-meta { display: flex; align-items: center; justify-content: space-between; gap: .65rem; }
+.index-archive, .archive-strip { font-size: .9rem; }
+.panel { min-width: 0; border: 1px solid var(--line); }
+.panel-title {
+  padding: .36rem .85rem;
+  border-bottom: 1px solid #416581;
+  color: #fff;
+  background: linear-gradient(#507a98, #395f7d);
+  font-size: 1rem;
+}
+.index-panel + .index-panel, .archive-strip, .page-note, .post + .post { margin-top: 1rem; }
+.forum-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.col-count { width: 5rem; }
+.col-author { width: 16%; }
+.col-last { width: 23%; }
+.forum-table th, .forum-table td { padding: .53rem .85rem; text-align: left; overflow-wrap: anywhere; }
+.forum-table tr > * + * { border-left: 1px solid #d8e2e9; }
+.forum-table thead th { background: #e8eff3; color: #3f586a; font-size: .875rem; font-weight: 600; }
+.forum-table tbody tr > * { border-top: 1px solid #d5dfe6; }
+.forum-table tbody tr:nth-child(even), .post-author { background: var(--soft); }
+.forum-table tbody tr:hover { background: #eef5f9; }
+.forum-table .number { text-align: center; font-variant-numeric: tabular-nums; }
+.board-name { display: flex; align-items: center; gap: .78rem; }
+.board-icon {
+  width: 1.15rem;
+  height: 1.38rem;
+  flex-shrink: 0;
+  border: 1px solid #7291a7;
+  background: repeating-linear-gradient(#8ba6b7 0 1px, transparent 1px 4px) center / .62rem .65rem no-repeat, #edf4f7;
+}
+.row-title { font-weight: 650; text-decoration: none; }
+.row-description { font-weight: 400; margin-top: .12rem; }
+.last-post { color: var(--muted); font-size: .875rem; }
+.mobile-detail { display: none; }
+.archive-strip, .site-footer { padding: .6rem .85rem; background: var(--soft); }
+.archive-strip { border: 1px solid var(--line); }
+.site-footer { border-top: 1px solid var(--line); padding-inline: 1.5rem; flex-wrap: wrap; }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0 0 .65rem; }
+.breadcrumbs li + li::before { content: "/"; margin: 0 .5rem; color: #718796; }
+.archive-layout { display: grid; grid-template-columns: minmax(14rem, 17rem) minmax(0, 1fr); align-items: start; gap: 1.1rem; }
+.year-group { padding: .55rem .8rem; }
+.year-group + .year-group, .empty-row, .site-information div + div { border-top: 1px solid var(--line); }
+.year-range { font-size: .81rem; color: var(--muted); margin-bottom: .25rem; }
+.year-grid { display: grid; grid-template-columns: repeat(5, 1fr); list-style: none; padding: 0; }
+.year-grid a { display: block; padding: .2rem 0; text-align: center; font-size: .875rem; }
+.year-grid [aria-current="page"] { background: #325c7b; color: white; font-weight: bold; }
+.result-heading { font-size: 1.1rem; margin-bottom: .5rem; }
+.empty-row { padding: 1.2rem .8rem; text-align: center; color: var(--muted); }
+.page-search { padding: 1rem; flex-wrap: wrap; }
+.page-search input { flex: 1 1 8rem; }
+.search-results { padding: 0 1.2rem 1rem 2.4rem; }
+.search-results span { margin-left: .7rem; color: var(--muted); }
+.site-information div { display: grid; grid-template-columns: 7rem 1fr; }
+.site-information dt, .site-information dd { padding: .65rem .85rem; }
+.site-information dt { background: var(--soft); font-weight: 600; }
+.post { display: grid; grid-template-columns: 9rem minmax(0, 1fr); overflow-wrap: anywhere; }
+.post-author, .post-content { padding: .8rem; }
+.post-meta { border-bottom: 1px solid var(--line); padding-bottom: .4rem; }
+.post-body > *, .post-quote, .post-edited { margin-top: .8rem; }
+.post-body :is(img, video) { max-width: 100%; height: auto; }
+.post-body pre { overflow: auto; }
+
+@media (max-width: 48rem) {
+  .site-shell { width: calc(100% - 1rem); margin: .5rem auto; }
+  .masthead, main, .navigation, .site-footer { padding-inline: .9rem; }
+  .archive-layout { grid-template-columns: 1fr; }
+  .year-group { display: grid; align-items: start; grid-template-columns: 5.5rem minmax(0, 1fr); }
+}
+@media (max-width: 38rem) {
+  .site-shell { width: 100%; margin: 0; border-inline: 0; }
+  .brand { gap: .55rem; }
+  .brand-name { font-size: 1.75rem; }
+  .navigation { align-items: stretch; flex-direction: column; }
+  .main-links a { padding: .45rem .55rem; }
+  .quick-search input { flex: 1; }
+  .quick-search input, .page-search input { font-size: 1rem; }
+  .forum-table :is(.col-last, .last-column, .col-author, .topic-author) { display: none; }
+  .col-count { width: 2.8rem; }
+  .forum-table :is(td, th) { padding: .52rem .45rem; }
+  .board-name { gap: .5rem; }
+  .mobile-detail { display: block; color: var(--muted); font-weight: normal; font-size: .81rem; }
+  .post { grid-template-columns: 1fr; }
+  .post-author { border-bottom: 1px solid var(--line); }
+  .site-footer { font-size: .81rem; }
+}
