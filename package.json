@@ -1,0 +1,7 @@
+{
+  "name": "linelog-site",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix forum ci && npm --prefix forum run build"
+  }
+}

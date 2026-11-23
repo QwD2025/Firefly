@@ -1,6 +1,9 @@
 name = "firefly"
 compatibility_date = "2026-05-17"
 
+[build]
+command = "npm run build"
+
 [assets]
 directory = "./forum/dist"
 
