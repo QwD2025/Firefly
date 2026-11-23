@@ -7,7 +7,7 @@ interface Props {
   caption?: string;
   empty?: string;
 }
-const { topics, caption = "主题列表", empty = "该版块暂无主题。" } = Astro.props;
+const { topics, caption = "主题列表", empty = "这个吧还没有帖子。" } = Astro.props;
 ---
 <section class="panel" aria-label={caption}>
   <table class="forum-table topic-table">

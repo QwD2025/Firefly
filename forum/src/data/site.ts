@@ -11,22 +11,22 @@ export const archiveYears = Array.from(
 
 export const boardGroups = [
   {
-    name: "站务",
+    name: "同城生活",
     boards: [
-      { id: "notice", name: "站务公告", description: "本站公告、版务与更新记录。" },
+      { id: "chat", name: "同城闲聊吧", description: "问路、找店，聊聊今天在街上碰见的事。" },
+      { id: "local", name: "老街吧", description: "贴张老照片，找找当年的街坊和店面。" },
     ],
   },
   {
-    name: "城市生活",
+    name: "兴趣同好",
     boards: [
-      { id: "chat", name: "街坊闲谈", description: "日常琐事、街坊互助与本地闲聊。" },
-      { id: "local", name: "城市见闻", description: "街区消息与居民的亲历记录。" },
+      { id: "legends", name: "都市怪谈吧", description: "那些讲了很多年的怪事，你听过哪个版本？" },
     ],
   },
   {
-    name: "传闻与调查",
+    name: "社区事务",
     boards: [
-      { id: "legends", name: "都市传说", description: "民间传闻、怪谈出处与查证。" },
+      { id: "notice", name: "吧务吧", description: "看公告，提建议，遇到坏链接也来这里说一声。" },
     ],
   },
 ] as const;

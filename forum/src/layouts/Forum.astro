@@ -20,11 +20,33 @@ const nav = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={`${site.name}，创立于 ${site.foundedYear} 年的虚构世界论坛。`} />
+    <meta name="description" content={`${site.name} 社区，自 ${site.foundedYear} 年起聊街坊日常、老街旧事和都市怪谈。`} />
     <meta name="theme-color" content="#21476a" />
     <title>{title} · {site.name}</title>
   </head>
   <body>
+    <dialog class="entry-notice" aria-labelledby="entry-title" aria-describedby="entry-copy" data-nosnippet>
+      <h2 id="entry-title" class="panel-title">入站提示</h2>
+      <p id="entry-copy">本站为虚构论坛，站内人物、帖子和事件均为虚构。</p>
+      <form method="dialog"><button autofocus>我知道了，进入论坛</button></form>
+    </dialog>
+    <script is:inline>
+      (() => {
+        const notice = document.querySelector(".entry-notice");
+        const key = "linelog-entry-acknowledged";
+        for (const name of ["localStorage", "sessionStorage"]) {
+          try { if (window[name].getItem(key) === "1") return; } catch {}
+        }
+        function acknowledge() {
+          for (const name of ["localStorage", "sessionStorage"]) {
+            try { window[name].setItem(key, "1"); break; } catch {}
+          }
+        }
+        notice.addEventListener("submit", acknowledge, { once: true });
+        notice.addEventListener("cancel", acknowledge, { once: true });
+        notice.showModal();
+      })();
+    </script>
     <a href="#main" class="skip-link">跳到正文</a>
     <div class="site-shell">
       <header>
@@ -37,7 +59,7 @@ const nav = [
             </span>
           </a>
           <div class="world-date">
-            <span>站内年份</span>
+            <span>论坛年历</span>
             <strong>{site.worldYear}</strong>
           </div>
         </div>
@@ -72,7 +94,7 @@ const nav = [
       </main>
       <footer class="site-footer">
         <span>{site.name} <span aria-hidden="true">·</span> {site.foundedYear}–{site.worldYear}</span>
-        <span>虚构世界论坛 <span aria-hidden="true">·</span> 访客只读</span>
+        <a href="/about/">关于本站</a>
       </footer>
     </div>
   </body>

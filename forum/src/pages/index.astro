@@ -7,7 +7,7 @@ const threads = await getThreads();
 ---
 <Forum title="论坛首页" active="home">
   <div class="page-heading index-heading">
-    <h1>论坛首页</h1>
+    <h1>逛吧</h1>
     <a class="index-archive" href="/archive/">浏览历史档案</a>
   </div>
   {boardGroups.map((group) => (
@@ -16,7 +16,7 @@ const threads = await getThreads();
       <table class="forum-table">
         <colgroup><col /><col class="col-count" /><col class="col-count" /><col class="col-last" /></colgroup>
         <thead>
-          <tr><th scope="col">版块</th><th scope="col" class="number">主题</th><th scope="col" class="number">回帖</th><th scope="col" class="last-column">最后回帖</th></tr>
+          <tr><th scope="col">吧名</th><th scope="col" class="number">主题</th><th scope="col" class="number">回帖</th><th scope="col" class="last-column">最后回帖</th></tr>
         </thead>
         <tbody>
           {group.boards.map((board) => {

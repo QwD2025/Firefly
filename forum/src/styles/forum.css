@@ -31,6 +31,18 @@ button {
   cursor: pointer;
 }
 button:hover { background: #e5eef4; }
+.entry-notice {
+  width: min(25rem, calc(100% - 2rem));
+  padding: 0;
+  border: 1px solid #738fa3;
+  background: white;
+  color: #203548;
+  box-shadow: 0 .75rem 2.5rem #172d4140;
+}
+.entry-notice::backdrop { background: #142c3e80; }
+.entry-notice p { margin: 1.25rem; line-height: 1.8; }
+.entry-notice form { padding: .65rem 1.25rem; background: var(--soft); text-align: right; }
+.entry-notice button { min-height: 2.5rem; }
 .visually-hidden, .skip-link:not(:focus) {
   position: absolute;
   width: 1px;
