@@ -16,7 +16,6 @@ const topics = (await getThreads()).filter((topic) => topic.board === board.id);
 <Forum title={board.name} trail={[]}>
   <div class="page-heading">
     <h1>{board.name}</h1>
-    <p>{board.description}</p>
   </div>
   <TopicTable topics={topics} />
 </Forum>

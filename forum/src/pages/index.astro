@@ -1,52 +1,42 @@
 ---
 import Forum from "../layouts/Forum.astro";
-import { boardGroups, site } from "../data/site";
+import { boards } from "../data/site";
 import { formatTime, getThreads } from "../data/forum";
 
 const threads = await getThreads();
 ---
 <Forum title="论坛首页" active="home">
   <div class="page-heading index-heading">
-    <h1>逛吧</h1>
+    <h1>论坛分区</h1>
     <a class="index-archive" href="/archive/">浏览历史档案</a>
   </div>
-  {boardGroups.map((group) => (
-    <section class="panel index-panel" aria-label={group.name}>
-      <h2 class="panel-title">{group.name}</h2>
-      <table class="forum-table">
-        <colgroup><col /><col class="col-count" /><col class="col-count" /><col class="col-last" /></colgroup>
-        <thead>
-          <tr><th scope="col">吧名</th><th scope="col" class="number">主题</th><th scope="col" class="number">回帖</th><th scope="col" class="last-column">最后回帖</th></tr>
-        </thead>
-        <tbody>
-          {group.boards.map((board) => {
-            const topics = threads.filter((thread) => thread.board === board.id);
-            const latest = topics[0];
-            return (
-              <tr>
-                <th scope="row">
-                  <div class="board-name">
-                    <span class="board-icon" aria-hidden="true"></span>
-                    <div>
-                      <a class="row-title" href={`/board/${board.id}/`}>{board.name}</a>
-                      <div class="row-description">{board.description}</div>
-                    </div>
-                  </div>
-                </th>
-                <td class="number">{topics.length}</td>
-                <td class="number">{topics.reduce((total, topic) => total + topic.posts.length - 1, 0)}</td>
-                <td class="last-column last-post">
-                  {latest ? <a href={`/topic/${latest.id}/#post-${latest.last.data.number}`}>{formatTime(latest.last.data.postedAt)}</a> : <span>暂无</span>}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </section>
-  ))}
-  <div class="archive-strip">
-    <span>档案范围 <strong>{site.foundedYear}–{site.worldYear}</strong></span>
-    <a href="/archive/">按年份查看</a>
-  </div>
+  <section class="panel" aria-label="论坛分区">
+    <table class="forum-table">
+      <colgroup><col /><col class="col-count" /><col class="col-count" /><col class="col-last" /></colgroup>
+      <thead>
+        <tr><th scope="col">分区</th><th scope="col" class="number">主题</th><th scope="col" class="number">回帖</th><th scope="col" class="last-column">最后回帖</th></tr>
+      </thead>
+      <tbody>
+        {boards.map((board) => {
+          const topics = threads.filter((thread) => thread.board === board.id);
+          const latest = topics[0];
+          return (
+            <tr>
+              <th scope="row">
+                <div class="board-name">
+                  <span class="board-icon" aria-hidden="true"></span>
+                  <a class="row-title" href={`/board/${board.id}/`}>{board.name}</a>
+                </div>
+              </th>
+              <td class="number">{topics.length}</td>
+              <td class="number">{topics.reduce((total, topic) => total + topic.posts.length - 1, 0)}</td>
+              <td class="last-column last-post">
+                {latest ? <a href={`/topic/${latest.id}/#post-${latest.last.data.number}`}>{formatTime(latest.last.data.postedAt)}</a> : <span>暂无</span>}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </section>
 </Forum>

@@ -104,7 +104,7 @@ main { padding: 1.35rem 1.5rem 1.6rem; }
 h1, h2, p, dl, dd, ol, ul { margin: 0; }
 h1 { font-size: 1.5rem; }
 .page-heading { margin-bottom: 1rem; }
-.page-heading p, .row-description, .page-note, .site-footer, .breadcrumbs, .post-meta, .post-edited { color: var(--muted); font-size: .875rem; }
+.page-heading p, .page-note, .site-footer, .breadcrumbs, .post-meta, .post-edited { color: var(--muted); font-size: .875rem; }
 .index-heading, .archive-strip, .site-footer, .post-meta { display: flex; align-items: center; justify-content: space-between; gap: .65rem; }
 .index-archive, .archive-strip { font-size: .9rem; }
 .panel { min-width: 0; border: 1px solid var(--line); }
@@ -115,7 +115,7 @@ h1 { font-size: 1.5rem; }
   background: linear-gradient(#507a98, #395f7d);
   font-size: 1rem;
 }
-.index-panel + .index-panel, .archive-strip, .page-note, .post + .post { margin-top: 1rem; }
+.archive-strip, .page-note, .post + .post { margin-top: 1rem; }
 .forum-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .col-count { width: 5rem; }
 .col-author { width: 16%; }
@@ -136,7 +136,6 @@ h1 { font-size: 1.5rem; }
   background: repeating-linear-gradient(#8ba6b7 0 1px, transparent 1px 4px) center / .62rem .65rem no-repeat, #edf4f7;
 }
 .row-title { font-weight: 650; text-decoration: none; }
-.row-description { font-weight: 400; margin-top: .12rem; }
 .last-post { color: var(--muted); font-size: .875rem; }
 .mobile-detail { display: none; }
 .archive-strip, .site-footer { padding: .6rem .85rem; background: var(--soft); }
