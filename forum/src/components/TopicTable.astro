@@ -1,5 +1,5 @@
 ---
-import { formatTime, memberName } from "../data/forum";
+import { formatTime } from "../data/forum";
 import type { getThreads } from "../data/forum";
 
 interface Props {
@@ -20,9 +20,9 @@ const { topics, caption = "主题列表", empty = "暂无主题。" } = Astro.pr
         <tr>
           <th scope="row">
             <a class="row-title" href={`/topic/${topic.id}/`}>{topic.title}</a>
-            <span class="mobile-detail">{memberName(topic.first.data.author)} · {formatTime(topic.last.data.postedAt)}</span>
+            <span class="mobile-detail">{topic.first.data.author} · {formatTime(topic.last.data.postedAt)}</span>
           </th>
-          <td class="topic-author">{memberName(topic.first.data.author)}</td>
+          <td class="topic-author">{topic.first.data.author}</td>
           <td class="number">{topic.posts.length - 1}</td>
           <td class="last-column"><a href={`/topic/${topic.id}/#post-${topic.last.data.number}`}>{formatTime(topic.last.data.postedAt)}</a></td>
         </tr>

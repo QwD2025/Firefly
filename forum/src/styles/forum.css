@@ -163,6 +163,7 @@ h1 { font-size: 1.5rem; }
 .post-author, .post-content { padding: .8rem; }
 .post-meta { border-bottom: 1px solid var(--line); padding-bottom: .4rem; }
 .post-body > *, .post-quote, .post-edited { margin-top: .8rem; }
+.written-post { white-space: pre-wrap; }
 .post-body :is(img, video) { max-width: 100%; height: auto; }
 .post-body pre { overflow: auto; }
 

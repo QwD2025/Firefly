@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import { z } from "astro/zod";
 import data from "../../content/forum.json";
 import { archiveYears, boards } from "./site";
+import { readWrittenTopics } from "./written-topics";
 
 const id = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const manifest = z.object({
@@ -30,7 +31,7 @@ export function yearOf(value: string) {
   return Number(value.slice(0, 4));
 }
 
-export function memberName(id: string) {
+function memberName(id: string) {
   const member = members.get(id);
   if (!member) throw new Error(`Unknown member: ${id}`);
   return member.name;
@@ -42,10 +43,12 @@ export function topicBoard(id: string) {
   return board;
 }
 
+type Floor = { data: Pick<Post["data"], "author" | "number" | "postedAt" | "replyTo" | "editedAt"> } &
+  ({ entry: Post } | { text: string });
 interface Thread extends Topic {
-  posts: Post[];
-  first: Post;
-  last: Post;
+  posts: Floor[];
+  first: Floor;
+  last: Floor;
 }
 
 let threadCollection: Promise<Thread[]> | undefined;
@@ -73,7 +76,7 @@ async function loadThreads() {
     grouped.set(topic, related);
   }
 
-  const threads = manifest.topics.map((topic) => {
+  const threads: Thread[] = manifest.topics.map((topic) => {
     topicBoard(topic.board);
     const posts = grouped.get(topic.id)?.sort((a, b) => a.data.number - b.data.number);
     if (!posts?.length) throw new Error(`Topic ${topic.id} has no opening post`);
@@ -87,7 +90,14 @@ async function loadThreads() {
         throw new Error(`Posts are out of chronological order in ${topic.id}`);
       }
     }
-    return { ...topic, posts, first: posts[0], last: posts[posts.length - 1] };
+    const floors = posts.map((entry) => ({
+      entry, data: { ...entry.data, author: memberName(entry.data.author) },
+    }));
+    return { ...topic, posts: floors, first: floors[0], last: floors[floors.length - 1] };
   });
+  for (const topic of readWrittenTopics()) {
+    if (metadata.has(topic.id)) throw new Error(`帖子/${topic.id}.txt 与已有帖子的网址重复，请更换文件名。`);
+    threads.push(topic);
+  }
   return threads.sort((a, b) => Date.parse(b.last.data.postedAt) - Date.parse(a.last.data.postedAt));
 }

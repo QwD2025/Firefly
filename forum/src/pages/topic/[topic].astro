@@ -1,7 +1,7 @@
 ---
 import { render } from "astro:content";
 import Forum from "../../layouts/Forum.astro";
-import { formatTime, getThreads, memberName, topicBoard } from "../../data/forum";
+import { formatTime, getThreads, topicBoard } from "../../data/forum";
 
 export async function getStaticPaths() {
   return (await getThreads()).map((thread) => ({
@@ -10,9 +10,9 @@ export async function getStaticPaths() {
 }
 const { thread } = Astro.props as { thread: Awaited<ReturnType<typeof getThreads>>[number] };
 const board = topicBoard(thread.board);
-const posts = await Promise.all(thread.posts.map(async (entry) => ({
-  entry,
-  ...(await render(entry)),
+const posts = await Promise.all(thread.posts.map(async (floor) => ({
+  floor,
+  Content: "entry" in floor ? (await render(floor.entry)).Content : undefined,
 })));
 ---
 <Forum title={thread.title} trail={[{ label: board.name, href: `/board/${board.id}/` }]}>
@@ -21,19 +21,19 @@ const posts = await Promise.all(thread.posts.map(async (entry) => ({
     <p>{board.name} · {thread.posts.length - 1} 条回帖</p>
   </div>
   <section class="thread" aria-label="主题楼层">
-    {posts.map(({ entry, Content }) => {
-      const { number, author, postedAt, editedAt, replyTo } = entry.data;
+    {posts.map(({ floor, Content }) => {
+      const { number, author, postedAt, editedAt, replyTo } = floor.data;
       const anchor = `post-${number}`;
       return (
         <article class="panel post" id={anchor}>
-          <div class="post-author"><strong>{memberName(author)}</strong></div>
+          <div class="post-author"><strong>{author}</strong></div>
           <div class="post-content">
             <header class="post-meta">
               <time datetime={postedAt}>{formatTime(postedAt)}</time>
               <a href={`#${anchor}`}>#{number}</a>
             </header>
             {replyTo && <p class="post-quote"><a href={`#post-${replyTo}`}>引用 #{replyTo}</a></p>}
-            <div class="post-body"><Content /></div>
+            <div class="post-body">{Content ? <Content /> : "text" in floor && <div class="written-post">{floor.text}</div>}</div>
             {editedAt && <p class="post-edited">最后编辑于 <time datetime={editedAt}>{formatTime(editedAt)}</time></p>}
           </div>
         </article>
