@@ -6,7 +6,5 @@
     { "id": "small-fish", "name": "鱼骨头" },
     { "id": "southwindow", "name": "南窗" }
   ],
-  "topics": [
-    { "id": "titor-eleven-seconds", "board": "chat", "title": "从1975年回来，我的时间机器里多了十一秒录音" }
-  ]
+  "topics": []
 }
